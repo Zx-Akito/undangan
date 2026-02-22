@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Budi & Shinta — Garden</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #fefdf9;
+            --forest: #2d5016;
+            --sage: #6b7f5c;
+            --leaf: #8fa872;
+            --blush: #e8d5c4;
+        }
+        body { font-family: 'Quicksand', sans-serif; background: var(--cream); color: var(--forest); scroll-behavior: smooth; }
+        .font-display { font-family: 'Italiana', serif; }
+
+        .grow {
+            opacity: 0;
+            transform: scale(0.98) translateY(12px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .grow.visible { opacity: 1; transform: scale(1) translateY(0); }
+
+        .hero-garden {
+            min-height: 100vh;
+            background: linear-gradient(165deg, var(--cream) 0%, rgba(143, 168, 114, 0.08) 50%, var(--cream) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-garden::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%238fa872' fill-opacity='0.08' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom center;
+            background-size: cover;
+            pointer-events: none;
+        }
+        .leaf-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 9999px;
+            background: rgba(143, 168, 114, 0.2);
+            color: var(--forest);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+        .card-garden {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 4px 24px rgba(45, 80, 22, 0.06);
+            border: 1px solid rgba(143, 168, 114, 0.2);
+        }
+        .divider-leaf {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--leaf), transparent);
+            border-radius: 1px;
+        }
+        .img-frame {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(45, 80, 22, 0.12);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Hero - Garden -->
+    <header class="hero-garden flex items-center justify-center px-6 py-20">
+        <div class="relative z-10 text-center max-w-3xl mx-auto">
+            <div class="leaf-badge mb-8 grow">🌿 Undangan Pernikahan</div>
+            <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[var(--forest)] mb-4 grow">
+                Budi & Shinta
+            </h1>
+            <p class="text-[var(--sage)] text-lg md:text-xl font-medium mb-10 grow">Sabtu, 20 Desember 2025</p>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-12 grow">
+                <div class="card-garden px-6 py-4 min-w-[72px] text-center">
+                    <span id="days" class="font-display block text-2xl text-[var(--forest)]">00</span>
+                    <span class="text-xs text-[var(--sage)] font-medium">Hari</span>
+                </div>
+                <div class="card-garden px-6 py-4 min-w-[72px] text-center">
+                    <span id="hours" class="font-display block text-2xl text-[var(--forest)]">00</span>
+                    <span class="text-xs text-[var(--sage)] font-medium">Jam</span>
+                </div>
+                <div class="card-garden px-6 py-4 min-w-[72px] text-center">
+                    <span id="minutes" class="font-display block text-2xl text-[var(--forest)]">00</span>
+                    <span class="text-xs text-[var(--sage)] font-medium">Menit</span>
+                </div>
+                <div class="card-garden px-6 py-4 min-w-[72px] text-center">
+                    <span id="seconds" class="font-display block text-2xl text-[var(--forest)]">00</span>
+                    <span class="text-xs text-[var(--sage)] font-medium">Detik</span>
+                </div>
+            </div>
+
+            <a href="#salam" class="inline-block bg-[var(--forest)] text-[var(--cream)] px-10 py-4 rounded-full font-semibold text-sm tracking-wide hover:bg-[var(--sage)] transition-colors shadow-lg shadow-[var(--forest)]/20 grow">Buka Undangan</a>
+        </div>
+    </header>
+
+    <!-- Salam -->
+    <section id="salam" class="py-24 px-6">
+        <div class="max-w-2xl mx-auto text-center">
+            <div class="divider-leaf mx-auto mb-8 grow"></div>
+            <h2 class="font-display text-4xl md:text-5xl text-[var(--forest)] mb-6 grow">Salam Hangat</h2>
+            <p class="text-[var(--sage)] leading-relaxed grow">Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami. Kehadiran Anda merupakan kehormatan dan kebahagiaan bagi kami.</p>
+        </div>
+    </section>
+
+    <!-- Couple -->
+    <section class="py-24 px-6 bg-[var(--blush)]/30">
+        <div class="max-w-5xl mx-auto">
+            <div class="divider-leaf mx-auto mb-8 grow"></div>
+            <h2 class="font-display text-4xl md:text-5xl text-center text-[var(--forest)] mb-16 grow">Mempelai</h2>
+
+            <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+                <div class="text-center grow">
+                    <div class="img-frame w-64 h-80 mx-auto mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Mempelai Pria" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-display text-2xl text-[var(--forest)]">Budi Santoso, S.T.</h3>
+                    <p class="text-[var(--sage)] text-sm mt-2">Putra dari Bapak Ahmad Santoso & Ibu Siti Aminah</p>
+                </div>
+                <div class="text-center grow">
+                    <div class="img-frame w-64 h-80 mx-auto mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600" alt="Mempelai Wanita" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-display text-2xl text-[var(--forest)]">Shinta Lestari, M.Ak.</h3>
+                    <p class="text-[var(--sage)] text-sm mt-2">Putri dari Bapak Bambang Wijaya & Ibu Maya Sari</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event -->
+    <section class="py-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="divider-leaf mx-auto mb-8 grow"></div>
+            <h2 class="font-display text-4xl md:text-5xl text-center text-[var(--forest)] mb-14 grow">Waktu & Lokasi</h2>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="card-garden p-8 grow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-10 h-10 rounded-full bg-[var(--leaf)]/20 flex items-center justify-center text-[var(--forest)]">🕐</span>
+                        <h4 class="font-display text-xl text-[var(--forest)]">Akad Nikah</h4>
+                    </div>
+                    <p class="text-[var(--sage)] font-medium">08.00 – 10.00 WIB</p>
+                    <p class="text-[var(--forest)] mt-2">Sabtu, 20 Desember 2025</p>
+                    <p class="text-[var(--sage)] text-sm mt-4">Masjid Agung Al-Azhar, Jakarta Selatan</p>
+                </div>
+                <div class="card-garden p-8 grow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-10 h-10 rounded-full bg-[var(--leaf)]/20 flex items-center justify-center text-[var(--forest)]">🌸</span>
+                        <h4 class="font-display text-xl text-[var(--forest)]">Resepsi</h4>
+                    </div>
+                    <p class="text-[var(--sage)] font-medium">11.00 – 14.00 WIB</p>
+                    <p class="text-[var(--forest)] mt-2">Sabtu, 20 Desember 2025</p>
+                    <p class="text-[var(--sage)] text-sm mt-4">The Grand Ballroom, Mulia Hotel, Jakarta</p>
+                </div>
+            </div>
+
+            <div class="rounded-2xl overflow-hidden shadow-lg grow">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.273618177421!2d106.7977465!3d-6.2276077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f14f6b1e60bb%3A0x6436f568a04294b4!2sMasjid%20Agung%20Al-Azhar!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" class="w-full h-80 border-0" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <p class="text-center mt-6 grow">
+                <a href="https://maps.app.goo.gl/your-link-here" target="_blank" class="text-[var(--forest)] font-semibold hover:text-[var(--sage)] transition-colors inline-flex items-center gap-2">Lihat di Google Maps →</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="py-24 px-6 bg-[var(--blush)]/30">
+        <div class="max-w-lg mx-auto">
+            <div class="card-garden p-10 grow">
+                <div class="divider-leaf mx-auto mb-6"></div>
+                <h2 class="font-display text-3xl text-center text-[var(--forest)] mb-2 grow">Konfirmasi Kehadiran</h2>
+                <p class="text-[var(--sage)] text-sm text-center mb-8 grow">Mohon isi formulir untuk membantu kami mempersiapkan jamuan.</p>
+
+                <form id="rsvpForm" class="space-y-5 grow">
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--forest)] mb-2">Nama Lengkap</label>
+                        <input type="text" required class="w-full border-2 border-[var(--leaf)]/30 rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--forest)] focus:ring-2 focus:ring-[var(--leaf)]/20" placeholder="Nama Anda">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--forest)] mb-2">Jumlah Tamu</label>
+                        <select class="w-full border-2 border-[var(--leaf)]/30 rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--forest)]">
+                            <option>1 Tamu</option><option>2 Tamu</option><option>3 Tamu</option><option>4+ Tamu</option>
+                        </select>
+                    </div>
+                    <div class="flex gap-4">
+                        <label class="flex-1 cursor-pointer text-center py-3 rounded-xl border-2 border-[var(--leaf)]/30 font-medium text-sm hover:border-[var(--forest)] transition-colors peer-checked:bg-[var(--forest)] peer-checked:text-[var(--cream)] peer-checked:border-[var(--forest)]">
+                            <input type="radio" name="presence" value="yes" class="hidden peer" checked> Hadir
+                        </label>
+                        <label class="flex-1 cursor-pointer text-center py-3 rounded-xl border-2 border-[var(--leaf)]/30 font-medium text-sm hover:border-[var(--forest)] transition-colors">
+                            <input type="radio" name="presence" value="no" class="hidden peer"> Berhalangan
+                        </label>
+                    </div>
+                    <button type="button" onclick="handleRSVP()" class="w-full bg-[var(--forest)] text-[var(--cream)] py-4 rounded-xl font-semibold hover:bg-[var(--sage)] transition-colors">Kirim Konfirmasi</button>
+                </form>
+                <div id="rsvpSuccess" class="hidden text-center py-10 grow">
+                    <p class="font-display text-2xl text-[var(--forest)]">Terima Kasih!</p>
+                    <p class="text-[var(--sage)] mt-2">Konfirmasi Anda telah kami simpan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guestbook -->
+    <section class="py-24 px-6">
+        <div class="max-w-2xl mx-auto">
+            <div class="divider-leaf mx-auto mb-8 grow"></div>
+            <h2 class="font-display text-4xl text-center text-[var(--forest)] mb-8 grow">Buku Tamu</h2>
+            <div class="card-garden p-8 mb-8 grow">
+                <div class="space-y-4">
+                    <input type="text" id="guestName" placeholder="Nama Anda" class="w-full border-2 border-[var(--leaf)]/30 rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--forest)]">
+                    <textarea id="guestMessage" placeholder="Tulis ucapan & doa restu..." class="w-full border-2 border-[var(--leaf)]/30 rounded-xl px-4 py-3 h-28 resize-none focus:outline-none focus:border-[var(--forest)]"></textarea>
+                    <button onclick="addComment()" class="w-full bg-[var(--leaf)] text-white py-3 rounded-xl font-semibold hover:bg-[var(--forest)] transition-colors">Kirim Ucapan</button>
+                </div>
+            </div>
+            <div id="commentList" class="space-y-4 max-h-96 overflow-y-auto">
+                <div class="card-garden p-6">
+                    <p class="font-semibold text-[var(--forest)]">Andi Pratama</p>
+                    <p class="text-[var(--sage)] text-sm mt-1">Selamat menempuh hidup baru! Semoga sakinah mawaddah warahmah.</p>
+                </div>
+                <div class="card-garden p-6">
+                    <p class="font-semibold text-[var(--forest)]">Keluarga Wijaya</p>
+                    <p class="text-[var(--sage)] text-sm mt-1">Happy wedding! Doa terbaik untuk kalian.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift -->
+    <section class="py-24 px-6 bg-[var(--blush)]/30">
+        <div class="max-w-md mx-auto text-center">
+            <div class="divider-leaf mx-auto mb-8 grow"></div>
+            <h2 class="font-display text-4xl text-[var(--forest)] mb-4 grow">Wedding Gift</h2>
+            <p class="text-[var(--sage)] text-sm mb-8 grow">Kehadiran Anda kado terindah. Jika ingin memberikan tanda kasih:</p>
+            <div class="card-garden p-8 grow">
+                <p class="text-xs uppercase tracking-widest text-[var(--sage)] mb-2 font-semibold">Bank BCA</p>
+                <p class="font-display text-2xl text-[var(--forest)] tracking-wider">1234567890</p>
+                <p class="text-[var(--sage)] text-sm mt-1">a.n. Budi Santoso</p>
+                <button onclick="copyAccount('1234567890')" class="mt-4 text-sm font-semibold text-[var(--forest)] hover:text-[var(--sage)] transition-colors">Salin Nomor Rekening</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 text-center bg-[var(--forest)] text-[var(--cream)]">
+        <p class="font-display text-4xl mb-4 grow">Budi & Shinta</p>
+        <p class="text-[var(--blush)] text-sm max-w-md mx-auto grow">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya..."</p>
+        <div class="divider-leaf mx-auto mt-8 opacity-50"></div>
+        <p class="text-xs mt-8 opacity-80">© 2025 — Crafted with Love</p>
+    </footer>
+
+    <audio id="bgMusic" loop preload="auto"><source src="../1.mp3" type="audio/mpeg"></audio>
+    <button id="musicToggle" type="button" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-[var(--forest)] text-[var(--cream)] flex items-center justify-center hover:bg-[var(--sage)] transition-colors shadow-lg" aria-label="Putar jeda musik">
+        <svg id="iconPlay" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="iconPause" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+
+    <script>
+        var observer = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.grow').forEach(function(el) { observer.observe(el); });
+
+        var weddingDate = new Date('2026-12-20T08:00:00+07:00');
+        setInterval(function() {
+            var now = new Date(), d = weddingDate - now;
+            if (d <= 0) return;
+            document.getElementById('days').textContent = String(Math.floor(d/86400000)).padStart(2,'0');
+            document.getElementById('hours').textContent = String(Math.floor((d%86400000)/3600000)).padStart(2,'0');
+            document.getElementById('minutes').textContent = String(Math.floor((d%3600000)/60000)).padStart(2,'0');
+            document.getElementById('seconds').textContent = String(Math.floor((d%60000)/1000)).padStart(2,'0');
+        }, 1000);
+
+        function handleRSVP() { document.getElementById('rsvpForm').classList.add('hidden'); document.getElementById('rsvpSuccess').classList.remove('hidden'); }
+        function addComment() {
+            var name = document.getElementById('guestName').value, msg = document.getElementById('guestMessage').value;
+            if (!name || !msg) return;
+            var div = document.createElement('div'); div.className = 'card-garden p-6 grow visible';
+            div.innerHTML = '<p class="font-semibold text-[var(--forest)]">' + name + '</p><p class="text-[var(--sage)] text-sm mt-1">' + msg + '</p>';
+            document.getElementById('commentList').prepend(div);
+            document.getElementById('guestName').value = ''; document.getElementById('guestMessage').value = '';
+        }
+        function copyAccount(n) { var t = document.createElement('textarea'); t.value = n; document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t); alert('Nomor rekening disalin.'); }
+
+        (function() {
+            var audio = document.getElementById('bgMusic'), btn = document.getElementById('musicToggle'), iconPlay = document.getElementById('iconPlay'), iconPause = document.getElementById('iconPause');
+            function updateIcons(playing) { iconPlay.classList.toggle('hidden', playing); iconPause.classList.toggle('hidden', !playing); }
+            audio.play().then(function() { updateIcons(true); }).catch(function() {});
+            document.addEventListener('click', function() { audio.play().then(function() { updateIcons(true); }).catch(function() {}); }, { once: true });
+            btn.addEventListener('click', function() { if (audio.paused) audio.play(), updateIcons(true); else audio.pause(), updateIcons(false); });
+            audio.addEventListener('play', function() { updateIcons(true); }); audio.addEventListener('pause', function() { updateIcons(false); });
+        })();
+    </script>
+</body>
+</html>

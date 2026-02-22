@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Budi & Shinta — Our Love Song</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --spotify-black: #121212;
+            --spotify-dark: #181818;
+            --spotify-card: #282828;
+            --spotify-green: #1DB954;
+            --spotify-green-hover: #1ed760;
+            --spotify-text: #ffffff;
+            --spotify-muted: #b3b3b3;
+            --spotify-subdued: #535353;
+        }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--spotify-black);
+            color: var(--spotify-text);
+            scroll-behavior: smooth;
+        }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.96);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .scale-in.visible { opacity: 1; transform: scale(1); }
+
+        /* Spotify gradient overlay on hero */
+        .hero-spotify {
+            background: linear-gradient(180deg, transparent 0%, rgba(29, 185, 84, 0.08) 40%, var(--spotify-black) 100%),
+                url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2070') center/cover no-repeat;
+        }
+
+        /* Album art style — square with rounded corners */
+        .album-art {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Play button / CTA style */
+        .btn-spotify {
+            background: var(--spotify-green);
+            color: #000;
+            font-weight: 700;
+            border-radius: 500px;
+            padding: 14px 32px;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .btn-spotify:hover {
+            background: var(--spotify-green-hover);
+            transform: scale(1.04);
+        }
+
+        /* Card like Spotify playlist/section */
+        .card-spotify {
+            background: var(--spotify-card);
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .card-spotify:hover {
+            background: #3e3e3e;
+        }
+
+        /* Progress bar style (decorative) */
+        .progress-bar {
+            height: 4px;
+            background: var(--spotify-subdued);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            background: var(--spotify-green);
+            border-radius: 2px;
+            width: 30%;
+        }
+
+        /* Section title like "Made for you" */
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--spotify-muted);
+        }
+
+        /* Waveform / music vibe line */
+        .waveform {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 24px;
+        }
+        .waveform span {
+            width: 3px;
+            background: var(--spotify-green);
+            border-radius: 2px;
+            opacity: 0.8;
+        }
+        .waveform span:nth-child(1) { height: 40%; }
+        .waveform span:nth-child(2) { height: 70%; }
+        .waveform span:nth-child(3) { height: 100%; }
+        .waveform span:nth-child(4) { height: 60%; }
+        .waveform span:nth-child(5) { height: 90%; }
+        .waveform span:nth-child(6) { height: 50%; }
+        .waveform span:nth-child(7) { height: 80%; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Hero — "Now Playing" style -->
+    <header class="relative min-h-screen flex items-center justify-center hero-spotify">
+        <div class="absolute inset-0 bg-[var(--spotify-black)]/40"></div>
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+            <div class="flex justify-center gap-1 mb-6 waveform fade-up">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <p class="section-label mb-4 fade-up">Now Playing — We're Getting Married</p>
+            <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-2 fade-up">
+                <span class="text-white">Budi</span>
+                <span class="text-[var(--spotify-green)] mx-2">&</span>
+                <span class="text-white">Shinta</span>
+            </h1>
+            <p class="text-[var(--spotify-muted)] text-lg md:text-xl mb-10 fade-up">Sabtu, 20 Desember 2025</p>
+
+            <!-- Countdown as "time remaining" style -->
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <div class="card-spotify rounded-lg px-5 py-4 min-w-[70px] text-center">
+                    <span id="days" class="font-display block text-2xl font-bold text-white">00</span>
+                    <span class="text-xs text-[var(--spotify-muted)]">Hari</span>
+                </div>
+                <div class="card-spotify rounded-lg px-5 py-4 min-w-[70px] text-center">
+                    <span id="hours" class="font-display block text-2xl font-bold text-white">00</span>
+                    <span class="text-xs text-[var(--spotify-muted)]">Jam</span>
+                </div>
+                <div class="card-spotify rounded-lg px-5 py-4 min-w-[70px] text-center">
+                    <span id="minutes" class="font-display block text-2xl font-bold text-white">00</span>
+                    <span class="text-xs text-[var(--spotify-muted)]">Menit</span>
+                </div>
+                <div class="card-spotify rounded-lg px-5 py-4 min-w-[70px] text-center">
+                    <span id="seconds" class="font-display block text-2xl font-bold text-white">00</span>
+                    <span class="text-xs text-[var(--spotify-muted)]">Detik</span>
+                </div>
+            </div>
+
+            <a href="#invitation" class="btn-spotify inline-flex items-center gap-2 font-display text-sm uppercase tracking-wider">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                Buka Undangan
+            </a>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-[var(--spotify-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </div>
+    </header>
+
+    <!-- Invitation — "Lyrics" / message -->
+    <section id="invitation" class="py-20 px-6 bg-[var(--spotify-black)]">
+        <div class="max-w-2xl mx-auto text-center">
+            <p class="section-label mb-4 fade-up">Salam Hangat</p>
+            <p class="text-[var(--spotify-muted)] leading-relaxed text-lg fade-up">Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami.</p>
+        </div>
+    </section>
+
+    <!-- Couple — "Artists" / album style -->
+    <section id="couple" class="py-20 px-6 bg-[var(--spotify-dark)]">
+        <div class="max-w-5xl mx-auto">
+            <p class="section-label text-center mb-2 fade-up">Featured Artists</p>
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-14 fade-up">Budi & Shinta</h2>
+
+            <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                <div class="text-center fade-up">
+                    <div class="album-art w-48 h-48 md:w-56 md:h-56 mx-auto mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Mempelai Pria" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white">Budi Santoso, S.T.</h3>
+                    <p class="text-[var(--spotify-muted)] text-sm mt-1">Putra dari Bapak Ahmad Santoso & Ibu Siti Aminah</p>
+                </div>
+                <div class="text-center fade-up">
+                    <div class="album-art w-48 h-48 md:w-56 md:h-56 mx-auto mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600" alt="Mempelai Wanita" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white">Shinta Lestari, M.Ak.</h3>
+                    <p class="text-[var(--spotify-muted)] text-sm mt-1">Putri dari Bapak Bambang Wijaya & Ibu Maya Sari</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event — "Tracklist" style -->
+    <section id="event" class="py-20 px-6 bg-[var(--spotify-black)]">
+        <div class="max-w-3xl mx-auto">
+            <p class="section-label text-center mb-2 fade-up">Setlist</p>
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-12 fade-up">Acara</h2>
+
+            <div class="space-y-3">
+                <div class="card-spotify rounded-lg p-6 flex flex-col sm:flex-row sm:items-center gap-4 scale-in">
+                    <div class="flex items-center gap-4 shrink-0">
+                        <span class="text-[var(--spotify-subdued)] font-mono text-sm w-6">01</span>
+                        <div class="w-12 h-12 rounded bg-[var(--spotify-dark)] flex items-center justify-center">
+                            <svg class="w-5 h-5 text-[var(--spotify-green)]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-display font-semibold text-white">Akad Nikah</p>
+                        <p class="text-[var(--spotify-muted)] text-sm">08:00 – 09:30 WIB · Gedung Serba Guna</p>
+                        <p class="text-[var(--spotify-subdued)] text-sm mt-1">Jl. Merdeka No. 123, Jakarta Selatan</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" rel="noopener" class="text-[var(--spotify-green)] hover:text-[var(--spotify-green-hover)] text-sm font-medium shrink-0 flex items-center gap-1">
+                        Maps <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                </div>
+                <div class="card-spotify rounded-lg p-6 flex flex-col sm:flex-row sm:items-center gap-4 scale-in">
+                    <div class="flex items-center gap-4 shrink-0">
+                        <span class="text-[var(--spotify-subdued)] font-mono text-sm w-6">02</span>
+                        <div class="w-12 h-12 rounded bg-[var(--spotify-dark)] flex items-center justify-center">
+                            <svg class="w-5 h-5 text-[var(--spotify-green)]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-display font-semibold text-white">Resepsi</p>
+                        <p class="text-[var(--spotify-muted)] text-sm">11:00 – 14:00 WIB · Ballroom Grand Hotel</p>
+                        <p class="text-[var(--spotify-subdued)] text-sm mt-1">Jl. Sudirman Kav. 52-53, Jakarta Pusat</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" rel="noopener" class="text-[var(--spotify-green)] hover:text-[var(--spotify-green-hover)] text-sm font-medium shrink-0 flex items-center gap-1">
+                        Maps <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery — "Albums" grid -->
+    <section id="gallery" class="py-20 px-6 bg-[var(--spotify-dark)]">
+        <div class="max-w-5xl mx-auto">
+            <p class="section-label text-center mb-2 fade-up">Photos</p>
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-12 fade-up">Momen Kami</h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="album-art aspect-square fade-up">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=800" alt="Gallery 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="album-art aspect-square fade-up">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800" alt="Gallery 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="album-art aspect-square fade-up">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&q=80&w=800" alt="Gallery 3" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="album-art aspect-square fade-up">
+                    <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?auto=format&fit=crop&q=80&w=800" alt="Gallery 4" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="py-20 px-6 bg-[var(--spotify-black)]">
+        <div class="max-w-xl mx-auto text-center">
+            <p class="section-label mb-2 fade-up">RSVP</p>
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-4 fade-up">Konfirmasi Kehadiran</h2>
+            <p class="text-[var(--spotify-muted)] mb-8 fade-up">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.</p>
+            <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20konfirmasi%20kehadiran%20untuk%20pernikahan%20Budi%20%26%20Shinta" target="_blank" rel="noopener" class="btn-spotify inline-flex items-center gap-2 font-display text-sm uppercase tracking-wider">
+                Konfirmasi via WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Gift — "Support" style -->
+    <section class="py-20 px-6 bg-[var(--spotify-dark)]">
+        <div class="max-w-xl mx-auto text-center">
+            <p class="section-label mb-2 fade-up">Wedding Gift</p>
+            <h2 class="font-display text-2xl md:text-3xl font-bold mb-4 fade-up">Hadiah Pernikahan</h2>
+            <p class="text-[var(--spotify-muted)] mb-6 fade-up">Doa restu Anda sudah menjadi hadiah terindah. Jika ingin memberikan tanda kasih:</p>
+            <div class="card-spotify rounded-lg p-6 text-left fade-up">
+                <p class="font-display font-semibold text-white mb-1">Bank BCA</p>
+                <p class="text-[var(--spotify-muted)] font-mono text-lg">1234567890 a.n. Budi Santoso</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing — "The End" -->
+    <section class="py-16 px-6 bg-[var(--spotify-black)] border-t border-[var(--spotify-card)]">
+        <div class="max-w-2xl mx-auto text-center">
+            <div class="progress-bar w-24 h-1 mx-auto mb-6">
+                <div class="fill"></div>
+            </div>
+            <p class="font-display text-2xl md:text-3xl font-bold text-[var(--spotify-green)] mb-2 fade-up">Terima Kasih</p>
+            <p class="text-[var(--spotify-subdued)] text-sm fade-up">Budi & Shinta</p>
+        </div>
+    </section>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="../1.mp3" type="audio/mpeg">
+    </audio>
+    <button id="musicToggle" type="button" class="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-[var(--spotify-green)] text-black shadow-lg flex items-center justify-center hover:bg-[var(--spotify-green-hover)] transition focus:outline-none focus:ring-2 focus:ring-white" aria-label="Putar jeda musik">
+        <svg id="iconPlay" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="iconPause" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+
+    <script>
+        function updateCountdown() {
+            var target = new Date('2026-12-20T08:00:00+07:00');
+            var now = new Date();
+            var diff = target - now;
+            if (diff <= 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+            var d = Math.floor(diff / 86400000);
+            var h = Math.floor((diff % 86400000) / 3600000);
+            var m = Math.floor((diff % 3600000) / 60000);
+            var s = Math.floor((diff % 60000) / 1000);
+            document.getElementById('days').textContent = String(d).padStart(2, '0');
+            document.getElementById('hours').textContent = String(h).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) e.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-up, .scale-in').forEach(function(el) { observer.observe(el); });
+
+        // Background music: autoplay + toggle button (fallback on first click if browser blocks autoplay)
+        (function() {
+            var audio = document.getElementById('bgMusic');
+            var btn = document.getElementById('musicToggle');
+            var iconPlay = document.getElementById('iconPlay');
+            var iconPause = document.getElementById('iconPause');
+
+            function updateIcons(playing) {
+                if (playing) {
+                    iconPlay.classList.add('hidden');
+                    iconPause.classList.remove('hidden');
+                } else {
+                    iconPlay.classList.remove('hidden');
+                    iconPause.classList.add('hidden');
+                }
+            }
+
+            function tryPlay() {
+                audio.play().then(function() { updateIcons(true); }).catch(function() {});
+            }
+
+            tryPlay();
+            document.addEventListener('click', tryPlay, { once: true });
+            document.addEventListener('touchstart', tryPlay, { once: true });
+
+            btn.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play();
+                    updateIcons(true);
+                } else {
+                    audio.pause();
+                    updateIcons(false);
+                }
+            });
+
+            audio.addEventListener('play', function() { updateIcons(true); });
+            audio.addEventListener('pause', function() { updateIcons(false); });
+        })();
+    </script>
+</body>
+</html>

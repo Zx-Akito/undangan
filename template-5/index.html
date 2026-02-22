@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Budi & Shinta — Dreamy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blush: #fce4ec;
+            --rose: #e91e63;
+            --soft-pink: #f8bbd9;
+            --mint: #c8e6c9;
+            --cream: #fffef9;
+            --text: #4a4a4a;
+        }
+        body { font-family: 'Quicksand', sans-serif; background: var(--cream); color: var(--text); scroll-behavior: smooth; overflow-x: hidden; }
+        .font-display { font-family: 'Italiana', serif; }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Floating animations for PNG-style elements */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(3deg); }
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(-2deg); }
+        }
+        @keyframes floatDelay {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.08); }
+        }
+        @keyframes bounce-in {
+            0% { opacity: 0; transform: scale(0.6) translateY(20px); }
+            60% { transform: scale(1.02) translateY(-4px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .float { animation: float 4s ease-in-out infinite; }
+        .float-slow { animation: floatSlow 5s ease-in-out infinite; }
+        .float-delay { animation: floatDelay 3.5s ease-in-out infinite; animation-delay: 0.5s; }
+        .spin-slow { animation: spinSlow 20s linear infinite; }
+        .pulse-soft { animation: pulse-soft 2.5s ease-in-out infinite; }
+        .bounce-in { animation: bounce-in 0.8s ease-out forwards; }
+
+        .hero-dreamy {
+            min-height: 100vh;
+            background: linear-gradient(180deg, var(--blush) 0%, var(--cream) 60%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Decorative PNG-like elements - positioned absolutely with animation */
+        .deco {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .deco img { width: 100%; height: 100%; object-fit: contain; }
+        .deco svg { width: 100%; height: 100%; }
+        /* Inline decorative graphics - flower, heart, leaf */
+        .deco-flower { fill: var(--rose); opacity: 0.35; }
+        .deco-heart { fill: var(--soft-pink); opacity: 0.5; }
+        .deco-leaf { fill: var(--mint); opacity: 0.4; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Hero with floating PNG-style decorations (SVG graphics + animation) -->
+    <header class="hero-dreamy px-6 py-20">
+        <!-- Floating decorative elements - SVG flowers/hearts with animation -->
+        <div class="deco top-[12%] left-[8%] w-16 h-16 md:w-20 md:h-20 float">
+            <svg viewBox="0 0 64 64" class="deco-flower"><path d="M32 12c-4-8-16-4-16 8 0 12 16 24 16 24s16-12 16-24c0-12-12-16-16-8zm0 0c4-8 16-4 16 8 0 12-16 24-16 24S16 32 16 20c0-12 12-16 16-8z"/><circle cx="32" cy="28" r="6" fill="var(--soft-pink)"/></svg>
+        </div>
+        <div class="deco top-[20%] right-[10%] w-14 h-14 md:w-18 md:h-18 float-slow">
+            <svg viewBox="0 0 64 64" class="deco-heart"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg>
+        </div>
+        <div class="deco bottom-[25%] left-[5%] w-12 h-12 float-delay">
+            <svg viewBox="0 0 64 64" class="deco-flower"><path d="M32 12c-4-8-16-4-16 8 0 12 16 24 16 24s16-12 16-24c0-12-12-16-16-8z"/><circle cx="32" cy="28" r="6" fill="var(--soft-pink)"/></svg>
+        </div>
+        <div class="deco bottom-[30%] right-[8%] w-18 h-18 float-slow" style="animation-delay: 1s;">
+            <svg viewBox="0 0 64 64" class="deco-heart"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg>
+        </div>
+        <div class="deco top-[35%] left-[3%] w-10 h-10 float">
+            <svg viewBox="0 0 64 64" class="deco-leaf"><path d="M32 4C20 12 8 28 8 40c0 12 10 20 24 20s24-8 24-20c0-12-12-28-24-36z"/></svg>
+        </div>
+        <div class="deco top-[45%] right-[4%] w-14 h-14 float-delay">
+            <svg viewBox="0 0 64 64" class="deco-flower"><path d="M32 12c-4-8-16-4-16 8 0 12 16 24 16 24s16-12 16-24c0-12-12-16-16-8z"/><circle cx="32" cy="28" r="6" fill="var(--soft-pink)"/></svg>
+        </div>
+
+        <div class="relative z-10 text-center max-w-3xl mx-auto">
+            <div class="inline-block mb-6 reveal">
+                <svg viewBox="0 0 64 64" class="w-12 h-12 mx-auto pulse-soft" style="fill: var(--rose); opacity: 0.9;"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg>
+            </div>
+            <p class="text-xs uppercase tracking-[0.35em] text-[var(--rose)] font-semibold mb-4 reveal">Undangan Pernikahan</p>
+            <h1 class="font-display text-5xl sm:text-6xl md:text-7xl text-[var(--text)] mb-2 bounce-in">
+                Budi <span class="text-[var(--rose)]">&</span> Shinta
+            </h1>
+            <p class="text-[var(--text)]/80 text-lg md:text-xl mt-4 mb-10 reveal">Sabtu, 20 Desember 2025</p>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-12 reveal">
+                <div class="bg-white/80 backdrop-blur rounded-2xl px-5 py-4 min-w-[70px] shadow-lg border border-[var(--soft-pink)]/50">
+                    <span id="days" class="font-display block text-2xl text-[var(--rose)]">00</span>
+                    <span class="text-xs text-[var(--text)]/70">Hari</span>
+                </div>
+                <div class="bg-white/80 backdrop-blur rounded-2xl px-5 py-4 min-w-[70px] shadow-lg border border-[var(--soft-pink)]/50">
+                    <span id="hours" class="font-display block text-2xl text-[var(--rose)]">00</span>
+                    <span class="text-xs text-[var(--text)]/70">Jam</span>
+                </div>
+                <div class="bg-white/80 backdrop-blur rounded-2xl px-5 py-4 min-w-[70px] shadow-lg border border-[var(--soft-pink)]/50">
+                    <span id="minutes" class="font-display block text-2xl text-[var(--rose)]">00</span>
+                    <span class="text-xs text-[var(--text)]/70">Menit</span>
+                </div>
+                <div class="bg-white/80 backdrop-blur rounded-2xl px-5 py-4 min-w-[70px] shadow-lg border border-[var(--soft-pink)]/50">
+                    <span id="seconds" class="font-display block text-2xl text-[var(--rose)]">00</span>
+                    <span class="text-xs text-[var(--text)]/70">Detik</span>
+                </div>
+            </div>
+
+            <a href="#salam" class="inline-block bg-[var(--rose)] text-white px-10 py-4 rounded-full font-semibold text-sm shadow-lg shadow-[var(--rose)]/30 hover:scale-105 transition-transform reveal">Buka Undangan</a>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
+            <span class="text-[var(--rose)]/60 text-xs">Scroll</span>
+            <svg viewBox="0 0 24 24" class="w-5 h-5 float-slow opacity-60" fill="var(--rose)"><path d="M12 4l-8 8h5v8h6v-8h5L12 4z"/></svg>
+        </div>
+    </header>
+
+    <!-- Salam -->
+    <section id="salam" class="py-24 px-6 relative">
+        <div class="deco top-8 left-[15%] w-10 h-10 float"><svg viewBox="0 0 64 64" class="deco-flower w-full h-full"><path d="M32 12c-4-8-16-4-16 8 0 12 16 24 16 24s16-12 16-24c0-12-12-16-16-8z"/><circle cx="32" cy="28" r="6" fill="var(--soft-pink)"/></svg></div>
+        <div class="deco top-12 right-[12%] w-8 h-8 float-slow"><svg viewBox="0 0 64 64" class="deco-heart w-full h-full"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg></div>
+        <div class="max-w-2xl mx-auto text-center relative z-10">
+            <div class="inline-block mb-6 reveal">
+                <svg viewBox="0 0 64 64" class="w-10 h-10 mx-auto" style="fill: var(--rose); opacity: 0.8;"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg>
+            </div>
+            <h2 class="font-display text-4xl md:text-5xl text-[var(--text)] mb-6 reveal">Salam Hangat</h2>
+            <p class="text-[var(--text)]/80 leading-relaxed reveal">Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami. Kehadiran Anda merupakan kehormatan bagi kami.</p>
+        </div>
+    </section>
+
+    <!-- Couple -->
+    <section class="py-24 px-6 bg-[var(--blush)]/40 relative overflow-hidden">
+        <div class="deco top-1/4 right-0 w-20 h-20 float"><svg viewBox="0 0 64 64" class="deco-flower w-full h-full"><path d="M32 12c-4-8-16-4-16 8 0 12 16 24 16 24s16-12 16-24c0-12-12-16-16-8z"/><circle cx="32" cy="28" r="6" fill="var(--soft-pink)"/></svg></div>
+        <div class="deco bottom-1/3 left-0 w-16 h-16 float-slow"><svg viewBox="0 0 64 64" class="deco-heart w-full h-full"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg></div>
+        <div class="max-w-5xl mx-auto relative z-10">
+            <h2 class="font-display text-4xl md:text-5xl text-center text-[var(--text)] mb-14 reveal">Mempelai</h2>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="text-center reveal">
+                    <div class="relative inline-block">
+                        <div class="absolute -inset-2 rounded-3xl bg-[var(--soft-pink)]/30 -z-10 float-slow"></div>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Mempelai Pria" class="w-56 h-72 object-cover rounded-2xl shadow-xl mx-auto">
+                        <svg viewBox="0 0 64 64" class="absolute -bottom-2 -right-2 w-10 h-10 float" style="fill: var(--rose);"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl text-[var(--text)] mt-6">Budi Santoso, S.T.</h3>
+                    <p class="text-[var(--text)]/70 text-sm mt-1">Putra dari Bapak Ahmad Santoso & Ibu Siti Aminah</p>
+                </div>
+                <div class="text-center reveal">
+                    <div class="relative inline-block">
+                        <div class="absolute -inset-2 rounded-3xl bg-[var(--soft-pink)]/30 -z-10 float-delay"></div>
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600" alt="Mempelai Wanita" class="w-56 h-72 object-cover rounded-2xl shadow-xl mx-auto">
+                        <svg viewBox="0 0 64 64" class="absolute -bottom-2 -left-2 w-10 h-10 float-slow" style="fill: var(--rose);"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl text-[var(--text)] mt-6">Shinta Lestari, M.Ak.</h3>
+                    <p class="text-[var(--text)]/70 text-sm mt-1">Putri dari Bapak Bambang Wijaya & Ibu Maya Sari</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event -->
+    <section class="py-24 px-6 relative">
+        <div class="deco top-20 left-[8%] w-12 h-12 float-delay"><svg viewBox="0 0 64 64" class="deco-flower w-full h-full"><path d="M32 12c-4-8-16-4-16 8 0 12 16 24 16 24s16-12 16-24c0-12-12-16-16-8z"/><circle cx="32" cy="28" r="6" fill="var(--soft-pink)"/></svg></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="flex justify-center gap-2 mb-8 reveal">
+                <svg viewBox="0 0 64 64" class="w-6 h-6 opacity-70" style="fill: var(--rose);"><path d="M32 12c-4-8-16-4-16 8 0 12 16 24 16 24s16-12 16-24c0-12-12-16-16-8z"/><circle cx="32" cy="28" r="6" fill="var(--soft-pink)"/></svg>
+                <h2 class="font-display text-4xl md:text-5xl text-[var(--text)]">Waktu & Lokasi</h2>
+                <svg viewBox="0 0 64 64" class="w-6 h-6 opacity-70" style="fill: var(--rose);"><path d="M32 12c-4-8-16-4-16 8 0 12 16 24 16 24s16-12 16-24c0-12-12-16-16-8z"/><circle cx="32" cy="28" r="6" fill="var(--soft-pink)"/></svg>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-[var(--soft-pink)]/40 reveal hover:shadow-xl transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg viewBox="0 0 64 64" class="w-8 h-8 float" style="fill: var(--rose);"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg>
+                        <h4 class="font-display text-xl text-[var(--rose)]">Akad Nikah</h4>
+                    </div>
+                    <p class="text-[var(--text)] font-medium">08.00 – 10.00 WIB</p>
+                    <p class="text-[var(--text)]/70 text-sm mt-1">Sabtu, 20 Desember 2025</p>
+                    <p class="text-[var(--text)]/80 mt-4">Masjid Agung Al-Azhar, Jakarta Selatan</p>
+                </div>
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-[var(--soft-pink)]/40 reveal hover:shadow-xl transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg viewBox="0 0 64 64" class="w-8 h-8 float-slow" style="fill: var(--rose);"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg>
+                        <h4 class="font-display text-xl text-[var(--rose)]">Resepsi</h4>
+                    </div>
+                    <p class="text-[var(--text)] font-medium">11.00 – 14.00 WIB</p>
+                    <p class="text-[var(--text)]/70 text-sm mt-1">Sabtu, 20 Desember 2025</p>
+                    <p class="text-[var(--text)]/80 mt-4">The Grand Ballroom, Mulia Hotel, Jakarta</p>
+                </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-lg reveal">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.273618177421!2d106.7977465!3d-6.2276077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f14f6b1e60bb%3A0x6436f568a04294b4!2sMasjid%20Agung%20Al-Azhar!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" class="w-full h-80 border-0" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <p class="text-center mt-6 reveal">
+                <a href="https://maps.app.goo.gl/your-link-here" target="_blank" class="text-[var(--rose)] font-semibold hover:underline inline-flex items-center gap-2">Lihat di Google Maps →</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="py-24 px-6 bg-[var(--blush)]/40 relative">
+        <div class="deco top-16 right-[10%] w-14 h-14 float"><svg viewBox="0 0 64 64" class="deco-flower w-full h-full"><path d="M32 12c-4-8-16-4-16 8 0 12 16 24 16 24s16-12 16-24c0-12-12-16-16-8z"/><circle cx="32" cy="28" r="6" fill="var(--soft-pink)"/></svg></div>
+        <div class="max-w-lg mx-auto relative z-10">
+            <div class="text-center mb-10 reveal">
+                <svg viewBox="0 0 64 64" class="w-10 h-10 mx-auto mb-4 float" style="fill: var(--rose);"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg>
+                <h2 class="font-display text-4xl text-[var(--text)]">Konfirmasi Kehadiran</h2>
+                <p class="text-[var(--text)]/70 text-sm mt-2">Mohon isi formulir di bawah ini.</p>
+            </div>
+            <div class="bg-white rounded-3xl p-8 shadow-lg border border-[var(--soft-pink)]/40 reveal">
+                <form id="rsvpForm" class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--text)] mb-2">Nama Lengkap</label>
+                        <input type="text" required class="w-full border-2 border-[var(--soft-pink)]/50 rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--rose)] focus:ring-2 focus:ring-[var(--rose)]/20" placeholder="Nama Anda">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--text)] mb-2">Jumlah Tamu</label>
+                        <select class="w-full border-2 border-[var(--soft-pink)]/50 rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--rose)]">
+                            <option>1 Tamu</option><option>2 Tamu</option><option>3 Tamu</option><option>4+ Tamu</option>
+                        </select>
+                    </div>
+                    <div class="flex gap-4">
+                        <label class="flex-1 cursor-pointer text-center py-3 rounded-xl border-2 border-[var(--soft-pink)]/50 font-medium text-sm hover:border-[var(--rose)] transition-colors peer-checked:bg-[var(--rose)] peer-checked:text-white peer-checked:border-[var(--rose)]">
+                            <input type="radio" name="presence" value="yes" class="hidden peer" checked> Hadir
+                        </label>
+                        <label class="flex-1 cursor-pointer text-center py-3 rounded-xl border-2 border-[var(--soft-pink)]/50 font-medium text-sm hover:border-[var(--rose)] transition-colors">
+                            <input type="radio" name="presence" value="no" class="hidden peer"> Berhalangan
+                        </label>
+                    </div>
+                    <button type="button" onclick="handleRSVP()" class="w-full bg-[var(--rose)] text-white py-4 rounded-xl font-semibold hover:scale-[1.02] transition-transform">Kirim Konfirmasi</button>
+                </form>
+                <div id="rsvpSuccess" class="hidden text-center py-12">
+                    <svg viewBox="0 0 64 64" class="w-14 h-14 mx-auto mb-4 pulse-soft" style="fill: var(--rose);"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg>
+                    <p class="font-display text-2xl text-[var(--text)]">Terima Kasih!</p>
+                    <p class="text-[var(--text)]/70 mt-2">Konfirmasi Anda telah kami terima.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guestbook -->
+    <section class="py-24 px-6 relative">
+        <div class="deco bottom-20 right-[5%] w-10 h-10 float-slow"><svg viewBox="0 0 64 64" class="deco-heart w-full h-full"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg></div>
+        <div class="max-w-2xl mx-auto relative z-10">
+            <h2 class="font-display text-4xl text-center text-[var(--text)] mb-8 reveal">Buku Tamu</h2>
+            <div class="bg-white rounded-3xl p-8 shadow-lg border border-[var(--soft-pink)]/40 mb-8 reveal">
+                <div class="space-y-4">
+                    <input type="text" id="guestName" placeholder="Nama Anda" class="w-full border-2 border-[var(--soft-pink)]/50 rounded-xl px-4 py-3 focus:outline-none focus:border-[var(--rose)]">
+                    <textarea id="guestMessage" placeholder="Tulis ucapan & doa restu..." class="w-full border-2 border-[var(--soft-pink)]/50 rounded-xl px-4 py-3 h-28 resize-none focus:outline-none focus:border-[var(--rose)]"></textarea>
+                    <button onclick="addComment()" class="w-full bg-[var(--rose)] text-white py-3 rounded-xl font-semibold hover:scale-[1.02] transition-transform">Kirim Ucapan</button>
+                </div>
+            </div>
+            <div id="commentList" class="space-y-4 max-h-96 overflow-y-auto">
+                <div class="bg-white rounded-2xl p-6 shadow border border-[var(--soft-pink)]/30 flex gap-4">
+                    <svg viewBox="0 0 64 64" class="w-8 h-8 shrink-0 opacity-70" style="fill: var(--rose);"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg>
+                    <div>
+                        <p class="font-semibold text-[var(--text)]">Andi Pratama</p>
+                        <p class="text-[var(--text)]/70 text-sm mt-1">Selamat menempuh hidup baru! Semoga sakinah mawaddah warahmah.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow border border-[var(--soft-pink)]/30 flex gap-4">
+                    <svg viewBox="0 0 64 64" class="w-8 h-8 shrink-0 opacity-70" style="fill: var(--rose);"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg>
+                    <div>
+                        <p class="font-semibold text-[var(--text)]">Keluarga Wijaya</p>
+                        <p class="text-[var(--text)]/70 text-sm mt-1">Happy wedding! Doa terbaik untuk kalian.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift -->
+    <section class="py-24 px-6 bg-[var(--blush)]/40 relative">
+        <div class="deco top-1/3 left-[8%] w-12 h-12 float-delay"><svg viewBox="0 0 64 64" class="deco-flower w-full h-full"><path d="M32 12c-4-8-16-4-16 8 0 12 16 24 16 24s16-12 16-24c0-12-12-16-16-8z"/><circle cx="32" cy="28" r="6" fill="var(--soft-pink)"/></svg></div>
+        <div class="max-w-md mx-auto text-center relative z-10">
+            <svg viewBox="0 0 64 64" class="w-10 h-10 mx-auto mb-6 reveal float" style="fill: var(--rose);"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg>
+            <h2 class="font-display text-4xl text-[var(--text)] mb-4 reveal">Wedding Gift</h2>
+            <p class="text-[var(--text)]/70 text-sm mb-8 reveal">Kehadiran Anda kado terindah. Jika ingin memberikan tanda kasih:</p>
+            <div class="bg-white rounded-3xl p-8 shadow-lg border border-[var(--soft-pink)]/40 reveal">
+                <p class="text-xs uppercase tracking-widest text-[var(--rose)] font-semibold mb-2">Bank BCA</p>
+                <p class="font-display text-2xl text-[var(--text)] tracking-wider">1234567890</p>
+                <p class="text-[var(--text)]/70 text-sm mt-1">a.n. Budi Santoso</p>
+                <button onclick="copyAccount('1234567890')" class="mt-4 text-sm font-semibold text-[var(--rose)] hover:underline">Salin Rekening</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 text-center bg-[var(--rose)]/10 relative">
+        <div class="flex justify-center gap-4 mb-6">
+            <svg viewBox="0 0 64 64" class="w-6 h-6 float opacity-70" style="fill: var(--rose);"><path d="M32 12c-4-8-16-4-16 8 0 12 16 24 16 24s16-12 16-24c0-12-12-16-16-8z"/><circle cx="32" cy="28" r="6" fill="var(--soft-pink)"/></svg>
+            <svg viewBox="0 0 64 64" class="w-6 h-6 float-slow opacity-70" style="fill: var(--rose);"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg>
+            <svg viewBox="0 0 64 64" class="w-6 h-6 float-delay opacity-70" style="fill: var(--rose);"><path d="M32 12c-4-8-16-4-16 8 0 12 16 24 16 24s16-12 16-24c0-12-12-16-16-8z"/><circle cx="32" cy="28" r="6" fill="var(--soft-pink)"/></svg>
+        </div>
+        <p class="font-display text-4xl text-[var(--text)] reveal">Budi & Shinta</p>
+        <p class="text-[var(--text)]/70 text-sm mt-4 max-w-md mx-auto reveal">© 2025 — Crafted with Love</p>
+    </footer>
+
+    <audio id="bgMusic" loop preload="auto"><source src="../1.mp3" type="audio/mpeg"></audio>
+    <button id="musicToggle" type="button" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-[var(--rose)] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg" aria-label="Putar jeda musik">
+        <svg id="iconPlay" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="iconPause" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+
+    <script>
+        var observer = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+        var weddingDate = new Date('2026-12-20T08:00:00+07:00');
+        setInterval(function() {
+            var now = new Date(), d = weddingDate - now;
+            if (d <= 0) return;
+            document.getElementById('days').textContent = String(Math.floor(d/86400000)).padStart(2,'0');
+            document.getElementById('hours').textContent = String(Math.floor((d%86400000)/3600000)).padStart(2,'0');
+            document.getElementById('minutes').textContent = String(Math.floor((d%3600000)/60000)).padStart(2,'0');
+            document.getElementById('seconds').textContent = String(Math.floor((d%60000)/1000)).padStart(2,'0');
+        }, 1000);
+
+        function handleRSVP() { document.getElementById('rsvpForm').classList.add('hidden'); document.getElementById('rsvpSuccess').classList.remove('hidden'); }
+        function addComment() {
+            var name = document.getElementById('guestName').value, msg = document.getElementById('guestMessage').value;
+            if (!name || !msg) return;
+            var div = document.createElement('div');
+            div.className = 'bg-white rounded-2xl p-6 shadow border border-[var(--soft-pink)]/30 flex gap-4 reveal visible';
+            div.innerHTML = '<svg viewBox="0 0 64 64" class="w-8 h-8 shrink-0 opacity-70" style="fill: var(--rose);"><path d="M32 52 C8 32 6 12 18 4 C26 0 32 8 32 8 C32 8 38 0 46 4 C58 12 56 32 32 52 Z"/></svg><div><p class="font-semibold text-[var(--text)]">' + name + '</p><p class="text-[var(--text)]/70 text-sm mt-1">' + msg + '</p></div>';
+            document.getElementById('commentList').prepend(div);
+            document.getElementById('guestName').value = ''; document.getElementById('guestMessage').value = '';
+        }
+        function copyAccount(n) { var t = document.createElement('textarea'); t.value = n; document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t); alert('Nomor rekening disalin.'); }
+
+        (function() {
+            var audio = document.getElementById('bgMusic'), btn = document.getElementById('musicToggle'), iconPlay = document.getElementById('iconPlay'), iconPause = document.getElementById('iconPause');
+            function updateIcons(playing) { iconPlay.classList.toggle('hidden', playing); iconPause.classList.toggle('hidden', !playing); }
+            audio.play().then(function() { updateIcons(true); }).catch(function() {});
+            document.addEventListener('click', function() { audio.play().then(function() { updateIcons(true); }).catch(function() {}); }, { once: true });
+            btn.addEventListener('click', function() { if (audio.paused) audio.play(), updateIcons(true); else audio.pause(), updateIcons(false); });
+            audio.addEventListener('play', function() { updateIcons(true); }); audio.addEventListener('pause', function() { updateIcons(false); });
+        })();
+    </script>
+</body>
+</html>
